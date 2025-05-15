@@ -3,8 +3,6 @@
 
 import type React from "react"
 import { useState, useEffect, useRef } from "react"
-import { useAppContext } from "@/context/app-context"
-import { useBucketContext } from "@/context/bucket-context"
 import { motion, AnimatePresence } from "framer-motion"
 import { Header } from "@/components/header"
 
@@ -84,11 +82,15 @@ export function ChatInterface() {
   }
 
   return (
-    <div className="min-h-screen bg-black flex flex-col">
-      <Header />
-      <div className="flex-1 bg-[#f5f5f5] flex flex-col items-center">
+    <div className="min-h-screen w-full flex flex-col bg-black">
+      {/* Header - full width, always at the top */}
+      <div className="w-full">
+        <Header />
+      </div>
+      {/* Main content - full width grey background */}
+      <div className="flex-1 w-full bg-[#f5f5f5] flex flex-col items-center">
         <div className="w-full max-w-4xl">
-          {/* Progress bar (optional, can be improved) */}
+          {/* Progress bar */}
           <div className="p-4 md:p-6 flex flex-col items-start">
             <div className="w-full h-2 bg-[#6b6b6b] rounded-full mb-2">
               <div
