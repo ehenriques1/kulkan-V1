@@ -60,7 +60,7 @@ export function LoginForm() {
           {/* Logo */}
           <div className="flex justify-center mb-6">
             <div className="w-24 h-24 relative">
-              <Image src="/images/kulkan-icon.jpeg" alt="Kulkan Logo" width={100} height={100} className="rounded-lg" />
+              <Image src="/images/kulkan-icon.jpeg" alt="Kulkan Logo" width={100} height={100} className="rounded-lg" priority style={{ height: 100, width: 'auto' }} />
             </div>
           </div>
 
@@ -104,6 +104,13 @@ export function LoginForm() {
               Submit
             </button>
           </form>
+
+          <button
+            className="w-full bg-[#ebfc72] text-black py-2 px-4 rounded-md mt-4 hover:bg-gray-200 transition-colors"
+            onClick={() => setCurrentStep("dashboard")}
+          >
+            Jump to Dashboard (Test)
+          </button>
 
           <div className="mt-4 text-center text-sm text-gray-500">
             Already have an account? <button className="text-black font-medium hover:underline">Login</button>

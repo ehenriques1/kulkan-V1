@@ -208,12 +208,13 @@ export function LeftSidebar() {
 
         {/* Footer navigation */}
         <div className="mt-auto p-4 border-t border-gray-200">
-          <div className="flex flex-col space-y-2">
+          <div className="flex flex-col">
             <Link href="/profile" className="flex items-center gap-2 text-sm hover:text-gray-600">
               <User className="h-5 w-5" style={{ color: iconColor }} />
               Profile
             </Link>
-            <Link href="/settings" className="flex items-center gap-2 text-sm hover:text-gray-600 ml-7">
+            <div style={{ height: 24 }} />
+            <Link href="/settings" className="flex items-center gap-2 text-sm hover:text-gray-600">
               <Settings className="h-5 w-5" style={{ color: iconColor }} />
               Settings
             </Link>

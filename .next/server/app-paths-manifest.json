@@ -1,6 +1,4 @@
 {
-  "/page": "app/page.js",
-  "/ideal-customer-profile/page": "app/ideal-customer-profile/page.js",
-  "/product-market-fit/page": "app/product-market-fit/page.js",
-  "/settings/page": "app/settings/page.js"
+  "/login/page": "app/login/page.js",
+  "/page": "app/page.js"
 }

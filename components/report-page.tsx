@@ -343,29 +343,29 @@ export function ReportPage() {
         {/* Collapsed follow-up toggle button (visible when collapsed on desktop) */}
         {!isMobile && !isFollowUpExpanded && (
           <div
-            className="w-12 bg-white border-l border-gray-200 flex flex-col items-center justify-center cursor-pointer hover:bg-gray-50 transition-all duration-500 ease-in-out shadow-md"
+            className="w-12 h-full bg-white border-l border-gray-200 flex flex-col items-center justify-center cursor-pointer hover:bg-gray-50 shadow-md"
             onClick={toggleFollowUpExpansion}
           >
             <div className="rotate-90 transform origin-center whitespace-nowrap text-xs text-gray-500 mb-2">
               Follow up area
             </div>
-            <ChevronLeft className="h-5 w-5 text-gray-400 animate-pulse" />
+            <ChevronLeft className="h-5 w-5 text-gray-400" />
           </div>
         )}
 
         {/* Right sidebar for chat/questions */}
         <div
           ref={drawerRef}
-          className={`bg-white border-l border-gray-200 flex flex-col transition-all duration-500 ease-in-out transform ${
+          className={`bg-white border-l border-gray-200 flex flex-col ${
             isFollowUpExpanded
-              ? "translate-x-0 opacity-100 w-full md:w-80"
-              : isMobile
-                ? "translate-x-full opacity-0 w-0 overflow-hidden"
-                : "translate-x-full opacity-0 w-0 overflow-hidden"
+              ? "h-full w-full md:w-[340px] md:max-w-[340px]"
+              : "w-0 overflow-hidden"
           } ${isMobile && isFollowUpExpanded ? "fixed inset-0 z-20" : ""}`}
           style={{
             willChange: "transform, opacity, width",
             transitionProperty: "transform, opacity, width",
+            maxWidth: isFollowUpExpanded ? 340 : undefined,
+            height: '100%',
           }}
         >
           <div className="p-4 border-b border-gray-200 flex justify-between items-center">
@@ -374,15 +374,15 @@ export function ReportPage() {
             </h3>
             <button
               onClick={toggleFollowUpExpansion}
-              className="text-gray-400 hover:text-gray-600 transition-transform duration-300 ease-in-out transform hover:scale-110"
+              className="text-gray-400 hover:text-gray-600"
               aria-label="Collapse follow-up area"
             >
-              {isMobile ? <X className="h-5 w-5" /> : <ChevronRight className="h-5 w-5" />}
+              <ChevronRight className="h-5 w-5" />
             </button>
           </div>
 
           {/* Chat area */}
-          <div className="flex-1 overflow-auto p-4">
+          <div className="flex-1 overflow-auto p-4 min-h-0">
             <div className="mb-6">
               <div className="flex items-start mb-4">
                 <div className="flex-shrink-0 mr-3 w-8 h-8 md:w-10 md:h-10 bg-[#ebfc72] rounded-md flex items-center justify-center overflow-hidden">
@@ -450,18 +450,19 @@ export function ReportPage() {
 
           {/* Input area */}
           <div className="p-4 border-t border-gray-200">
-            <textarea
-              rows={1}
-              value={inputValue}
-              onChange={(e) => setInputValue(e.target.value)}
-              onKeyDown={handleKeyDown}
-              placeholder="Ask a follow-up question..."
-              className="w-full p-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#ebfc72] resize-none"
-            />
-            <div className="flex justify-end mt-2">
+            <div className="flex items-stretch gap-2">
+              <textarea
+                rows={1}
+                value={inputValue}
+                onChange={(e) => setInputValue(e.target.value)}
+                onKeyDown={handleKeyDown}
+                placeholder="Ask a follow-up question..."
+                className="flex-1 h-[50px] rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#ebfc72] resize-none overflow-y-auto truncate text-base leading-tight py-0"
+                style={{ maxHeight: 50, minHeight: 50, padding: '0 12px', display: 'flex', alignItems: 'center' }}
+              />
               <button
                 onClick={handleSendMessage}
-                className="bg-[#ebfc72] text-black px-4 py-2 rounded-md hover:bg-yellow-400 transition-colors duration-200"
+                className="bg-[#ebfc72] text-black px-4 rounded-md transition-colors duration-200 flex-shrink-0 hover:bg-gray-700 hover:text-white h-[50px]"
               >
                 Send
               </button>

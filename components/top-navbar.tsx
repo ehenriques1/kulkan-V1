@@ -25,6 +25,8 @@ export function TopNavbar({ title, showSearch = false }: TopNavbarProps) {
               width={100}
               height={30}
               className="object-contain"
+              priority
+              style={{ height: 30, width: 'auto' }}
             />
           </Link>
         </div>
