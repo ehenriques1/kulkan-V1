@@ -137,73 +137,73 @@ export function ChatInterface() {
   const { number, text, optional } = getFormattedQuestion()
 
   return (
-    <div className="flex flex-col h-screen bg-black">
-      {/* Header - full width, fixed at the top */}
-      <div className="w-full">
-        <Header />
-      </div>
+    <div className="min-h-screen bg-black flex flex-col">
+      {/* Header - full width, always at the top */}
+      <Header />
 
-      {/* Main content */}
-      <div className="flex-1 bg-[#f5f5f5] flex flex-col">
-        {/* Progress bar */}
-        <div className="p-4 md:p-6 flex flex-col items-start">
-          <div className="w-full max-w-2xl h-2 bg-[#6b6b6b] rounded-full mb-2">
-            <div
-              className="h-2 bg-[#ebfc72] rounded-full transition-all duration-500 ease-in-out"
-              style={{ width: `${((currentQuestion + 1) / questions.length) * 100}%` }}
-            ></div>
+      {/* Main content - centered, responsive container */}
+      <div className="flex-1 bg-[#f5f5f5] flex flex-col items-center">
+        <div className="w-full max-w-4xl">
+          {/* Progress bar */}
+          <div className="p-4 md:p-6 flex flex-col items-start">
+            <div className="w-full h-2 bg-[#6b6b6b] rounded-full mb-2">
+              <div
+                className="h-2 bg-[#ebfc72] rounded-full transition-all duration-500 ease-in-out"
+                style={{ width: `${((currentQuestion + 1) / questions.length) * 100}%` }}
+              ></div>
+            </div>
+            <div className="text-xs md:text-sm text-gray-500 mt-1 ml-1">
+              {currentQuestion + 1} of {questions.length}
+            </div>
           </div>
-          <div className="text-xs md:text-sm text-gray-500 mt-1 ml-1">
-            {currentQuestion + 1} of {questions.length}
-          </div>
-        </div>
 
-        {/* Question and input area - moved higher */}
-        <div className="flex-1 flex flex-col justify-start items-center px-4 mt-8">
-          <div className="w-full max-w-2xl">
-            <AnimatePresence mode="wait">
-              {showQuestion && (
-                <motion.div
-                  key={`question-${currentQuestion}`}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.5 }}
-                  className="mb-6"
-                >
-                  <div className="flex items-start mb-4">
-                    <div className="bg-[#ebfc72] w-8 h-8 md:w-10 md:h-10 flex items-center justify-center mr-3 flex-shrink-0">
-                      <span className="text-black font-bold">k</span>
-                    </div>
-                    <div>
-                      <div className="font-medium mb-2 text-xl md:text-2xl">
-                        <span className="mr-2">{number}</span>
-                        <span className="truncate-2">{text}</span>
+          {/* Question and input area - moved higher */}
+          <div className="flex flex-col justify-start items-center px-4 mt-8">
+            <div className="w-full max-w-2xl">
+              <AnimatePresence mode="wait">
+                {showQuestion && (
+                  <motion.div
+                    key={`question-${currentQuestion}`}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={{ duration: 0.5 }}
+                    className="mb-6"
+                  >
+                    <div className="flex items-start mb-4">
+                      <div className="bg-[#ebfc72] w-8 h-8 md:w-10 md:h-10 flex items-center justify-center mr-3 flex-shrink-0">
+                        <span className="text-black font-bold">k</span>
                       </div>
-                      {optional && (
-                        <div className="text-xs md:text-sm text-gray-500 truncate-1">
-                          (This is optional - you can type "I don't know" or "skip" if you prefer)
+                      <div>
+                        <div className="font-medium mb-2 text-xl md:text-2xl">
+                          <span className="mr-2">{number}</span>
+                          <span className="truncate-2">{text}</span>
                         </div>
-                      )}
+                        {optional && (
+                          <div className="text-xs md:text-sm text-gray-500 truncate-1">
+                            (This is optional - you can type "I don't know" or "skip" if you prefer)
+                          </div>
+                        )}
+                      </div>
                     </div>
-                  </div>
 
-                  <form onSubmit={handleSubmit} className="ml-[44px] md:ml-[52px]">
-                    <textarea
-                      ref={textareaRef}
-                      value={userResponse}
-                      onChange={(e) => setUserResponse(e.target.value)}
-                      onKeyDown={handleKeyDown}
-                      disabled={isLoading}
-                      className="w-full p-2 border-b border-gray-300 bg-transparent focus:outline-none focus:border-[#ebfc72] resize-none overflow-hidden"
-                      placeholder="Type your answer here..."
-                      rows={1}
-                      style={{ minHeight: "40px", height: "auto" }}
-                    />
-                  </form>
-                </motion.div>
-              )}
-            </AnimatePresence>
+                    <form onSubmit={handleSubmit} className="ml-[44px] md:ml-[52px]">
+                      <textarea
+                        ref={textareaRef}
+                        value={userResponse}
+                        onChange={(e) => setUserResponse(e.target.value)}
+                        onKeyDown={handleKeyDown}
+                        disabled={isLoading}
+                        className="w-full p-2 border-b border-gray-300 bg-transparent focus:outline-none focus:border-[#ebfc72] resize-none overflow-hidden"
+                        placeholder="Type your answer here..."
+                        rows={1}
+                        style={{ minHeight: '40px', height: 'auto' }}
+                      />
+                    </form>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
           </div>
         </div>
       </div>
