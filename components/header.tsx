@@ -29,9 +29,6 @@ export function Header({ title, showSearch = false }: HeaderProps) {
               style={{ height: '100%', width: 'auto' }}
             />
           </Link>
-          {title && (
-            <span className="ml-4 text-base md:text-lg font-semibold truncate flex-1">{title}</span>
-          )}
         </div>
       </div>
     </div>
