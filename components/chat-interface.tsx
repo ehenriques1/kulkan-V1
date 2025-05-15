@@ -138,8 +138,10 @@ export function ChatInterface() {
 
   return (
     <div className="flex flex-col h-screen bg-black">
-      {/* Header */}
-      <Header />
+      {/* Header - full width, fixed at the top */}
+      <div className="w-full">
+        <Header />
+      </div>
 
       {/* Main content */}
       <div className="flex-1 bg-[#f5f5f5] flex flex-col">
@@ -156,8 +158,8 @@ export function ChatInterface() {
           </div>
         </div>
 
-        {/* Question and input area */}
-        <div className="flex-1 flex flex-col justify-center items-center px-4">
+        {/* Question and input area - moved higher */}
+        <div className="flex-1 flex flex-col justify-start items-center px-4 mt-8">
           <div className="w-full max-w-2xl">
             <AnimatePresence mode="wait">
               {showQuestion && (
@@ -174,7 +176,7 @@ export function ChatInterface() {
                       <span className="text-black font-bold">k</span>
                     </div>
                     <div>
-                      <div className="font-medium mb-2">
+                      <div className="font-medium mb-2 text-xl md:text-2xl">
                         <span className="mr-2">{number}</span>
                         <span className="truncate-2">{text}</span>
                       </div>
