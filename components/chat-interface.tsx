@@ -146,14 +146,14 @@ export function ChatInterface() {
       {/* Main content */}
       <div className="flex-1 bg-[#f5f5f5] flex flex-col">
         {/* Progress bar */}
-        <div className="p-4 md:p-6 flex flex-col items-center">
+        <div className="p-4 md:p-6 flex flex-col items-start">
           <div className="w-full max-w-2xl h-2 bg-[#6b6b6b] rounded-full mb-2">
             <div
               className="h-2 bg-[#ebfc72] rounded-full transition-all duration-500 ease-in-out"
               style={{ width: `${((currentQuestion + 1) / questions.length) * 100}%` }}
             ></div>
           </div>
-          <div className="text-xs md:text-sm text-gray-500 self-start">
+          <div className="text-xs md:text-sm text-gray-500 mt-1 ml-1">
             {currentQuestion + 1} of {questions.length}
           </div>
         </div>
